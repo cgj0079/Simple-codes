@@ -6,9 +6,28 @@
 <title>간단한 코드</title>
 </head>
 <body>
+<button id="copyButton">html 코드 가져오는 파이썬 코드</button>
+<pre id="codeToCopy" style="display: none;">
+import requests
+from bs4 import BeautifulSoup
 
-<p id = "copyText">Html코드 가져오는 파이썬 코드</p>
+def get_html_from_url(url):
+    try:
+        # Get HTML from URL
+        response = requests.get(url)
+        if response.status_code == 200:
+            soup = BeautifulSoup(response.text, 'html.parser')
+            print(soup.prettify())
+        else:
+            # Error Message
+            print("Error: Failed to fetch HTML from URL")
+    except Exception as e:
+        print("Error:", e)
 
+# URL to test
+url = "-"
+get_html_from_url(url)
+</pre>
 <script src = "script.js"></script>
 
 </body>
